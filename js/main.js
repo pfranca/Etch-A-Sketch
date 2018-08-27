@@ -32,3 +32,26 @@ clear.addEventListener("click", () => {
         pixel.style.backgroundColor = "#c4dfe6";
     });
 });
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+const colorize = document.getElementById("color");
+colorize.addEventListener("click", () => {   
+    overideEventListener();
+});
+
+function overideEventListener(){
+    pixels.forEach(function(pixel) {
+        pixel.addEventListener("mouseover", function( event ) {   
+            // highlight the mouseover target
+            event.target.style.backgroundColor = getRandomColor();
+        });
+    });
+}
